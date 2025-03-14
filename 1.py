@@ -1,16 +1,14 @@
-class Solution:
-    @classmethod
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
-        for i in nums:
-            index = nums.index(i)
-            tamanho_lista = len(nums)
-            while index < tamanho_lista - 1:
-                soma = nums[index] + nums[index+1]
-                index_1 = index
-                index_2 = index +1
-                index += 1
-                if soma == target:
-                    return [index_1,index_2]
-
-nums=[3,2,3]
-Solution.twoSum(nums,6)
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        view = {}
+        for index, valor in enumerate(nums):
+            complemento = target - valor
+            if complemento in view:
+                return [view[complemento], index]
+            else:
+                view[valor] = index
